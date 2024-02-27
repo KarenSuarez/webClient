@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>parking record</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="/favicon.ico">
+<script src='./script.js'></script>
+</head>
+<body>
+    <div class="container">
+        <h1>PARKING RECORD</h1>
+   
+        <div class="menu">
+            <button class="submit-btn" onclick="showRegistrationForm()">Register Car</button>
+            <button class="submit-btn" onclick="showCarsList()">List Cars</button>
+            <button class="submit-btn" onclick="showRemovalForm()">Remove Car</button>
+        </div>
+        
+        <!-- Formulario de registro -->
+        <form id='registration-form' style="display: none;">
+            <div class="input-group">
+                <label for='name'>Your name</label>
+                <input name='name' id='name' placeholder="Enter your name" />
+            </div>
+            <div class="input-group">
+                <label for='placa'>Your placa</label>
+                <input name='placa' id='placa' placeholder="Enter your placa" />
+            </div>
+            <div class="input-group">
+                <label for='ColorCar'>Color's Car</label>
+                <input name='ColorCar' id='ColorCar' placeholder="Enter the color's car" />
+            </div>
+            <div class="input-group">
+                <label for='files'>Upload a photo of the car</label>
+                <input id='files' type="file" multiple>
+            </div>
+            <button class="submit-btn" type='submit'>Upload</button>
+        </form>
+        
+        <!-- Lista de carros -->
+        <div id="cars-list" style="display: none;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>License Plate</th>
+                        <th>Color</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody id="cars-table-body">
+                    <!-- Aquí se agregarán las filas de la tabla -->
+                </tbody>
+            </table>
+            
+        </div>
+        
+        <!-- Formulario de eliminación -->
+        <form id='removal-form' style="display: none;">
+            <div class="input-group">
+                <label for='license-plate'>License Plate</label>
+                <input name='license-plate' id='license-plate' placeholder="Enter license plate" />
+            </div>
+            <button class="submit-btn" type='submit'>Remove</button>
+        </form>
+    </div>
+    <script src='./script.js'></script>
+</body>
+</html>

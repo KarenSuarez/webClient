@@ -1,3 +1,4 @@
+const IP_ADDRESS = '10.4.74.206'
 function showRegistrationForm() {
   document.getElementById("registration-form").style.display = "block";
   document.getElementById("cars-list").style.display = "none";
@@ -19,7 +20,7 @@ function showRemovalForm() {
 document.addEventListener("DOMContentLoaded", function () {
   const registrationForm = document.getElementById("registration-form");
   registrationForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+    event.preventDefault();
 
     const formData = new FormData(registrationForm);
     const requestData = {
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
       color: formData.get("ColorCar"),
     };
 
-    fetch("http://localhost:3000/cars", {
+    fetch(`http://${IP_ADDRESS}:3000/cars`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,25 +38,23 @@ document.addEventListener("DOMContentLoaded", function () {
     })
       .then((response) => response.text())
       .then((data) => {
-        alert(data); // Mostrar mensaje de éxito
-        registrationForm.reset(); // Reiniciar el formulario
+        alert(data); 
+        registrationForm.reset(); 
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert("An error occurred. Please try again."); // Mostrar mensaje de error
+        alert("An error occurred. Please try again."); 
       });
   });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Función para obtener y mostrar la lista de carros
   function fetchCarsList() {
-    fetch("http://localhost:3000/cars") // Reemplaza con la URL correcta de tu servidor
+    fetch(`http://${IP_ADDRESS}:3000/cars`)
       .then((response) => response.json())
       .then((data) => {
         const carsTableBody = document.getElementById("cars-table-body");
-        carsTableBody.innerHTML = ""; // Limpiar el cuerpo de la tabla antes de agregar filas
-
+        carsTableBody.innerHTML = "";
         data.forEach((car) => {
           const row = document.createElement("tr");
           row.innerHTML = `
@@ -71,25 +70,23 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error:", error);
         alert(
           "An error occurred while fetching the car list. Please try again."
-        ); // Mostrar mensaje de error
+        ); 
       });
   }
 
-  // Llamar a fetchCarsList cuando la página se cargue
   fetchCarsList();
 });
 
 document.addEventListener("DOMContentLoaded", function () {
   const removalForm = document.getElementById("removal-form");
 
-  // Evento para manejar el envío del formulario de eliminación
   removalForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+    event.preventDefault();
 
     const formData = new FormData(removalForm);
     const licensePlate = formData.get("license-plate");
 
-    fetch("http://localhost:3000/cars", {
+    fetch(`http://${IP_ADDRESS}:3000/cars`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -98,13 +95,13 @@ document.addEventListener("DOMContentLoaded", function () {
     })
       .then((response) => response.text())
       .then((data) => {
-        alert(data); // Mostrar mensaje de éxito
-        fetchCarsList(); // Actualizar la lista de carros después de eliminar uno
-        removalForm.reset(); // Reiniciar el formulario
+        alert(data); 
+        fetchCarsList(); 
+        removalForm.reset();
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert("An error occurred while removing the car. Please try again."); // Mostrar mensaje de error
+        alert("An error occurred while removing the car. Please try again."); 
       });
   });
 });

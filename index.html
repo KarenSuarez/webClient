@@ -19,16 +19,26 @@
     
         <form id='registration-form' style="display: none;">
             <div class="input-group">
-                <label for='name'>Your name</label>
+                <label for='name'>Name</label>
                 <input name='name' id='name' placeholder="Enter your name" />
             </div>
             <div class="input-group">
-                <label for='placa'>Your placa</label>
-                <input name='placa' id='placa' placeholder="Enter your placa" />
+                <label for='placa'>License plate</label>
+                <input name='placa' id='placa' placeholder="Enter your license plate" />
             </div>
             <div class="input-group">
-                <label for='ColorCar'>Color's Car</label>
-                <input name='ColorCar' id='ColorCar' placeholder="Enter the color's car" />
+                <label for='ColorCar'>Car's Color</label>
+                <select name="ColorCar" id="ColorCar">
+                    <option value="blue">Blue</option>
+                    <option value="red">Red</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                    <option value="gray">Gray</option>
+                    <option value="green">Green</option>
+                    <option value="orange">Orange</option>
+                    <option value="pink">Pink</option>
+                  </select>
+
             </div>
             <div class="input-group">
                 <label for='files'>Upload a photo of the car</label>
@@ -62,6 +72,5 @@
             <button class="submit-btn" type='submit'>Remove</button>
         </form>
     </div>
-    <script src='./script.js'></script>
 </body>
 </html>

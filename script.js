@@ -1,4 +1,12 @@
-const IP_ADDRESS = 'localhost'
+
+const express = require('express');
+const app = express();
+
+require('dotenv').config({path: './.env'});
+const PORT = process.env.PORT; 
+const IP_ADDRESS = process.env.IP_ADDRESS;
+
+
 function showRegistrationForm() {
   document.getElementById("registration-form").style.display = "block";
   document.getElementById("cars-list").style.display = "none";
@@ -30,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
       color: formData.get("ColorCar"),
     };
 
-    fetch(`http://${ip_addres}:3000/cars`, {
+    fetch(`http://${IP_ADDRESS}:${PORT}/cars`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
   function fetchCarsList() {
-    fetch(`http://${ip_addres}:3000/cars`)
+    fetch(`http://${IP_ADDRESS}:${PORT}/cars`)
       .then((response) => response.json())
       .then((data) => {
         const carsTableBody = document.getElementById("cars-table-body");
@@ -87,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const formData = new FormData(removalForm);
     const licensePlate = formData.get("license-plate");
 
-    fetch(`http://${ip_addres}:3000/cars`, {
+    fetch(`http://${IP_ADDRESS}:${PORT}/cars`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

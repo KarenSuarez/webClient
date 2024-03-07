@@ -1,4 +1,4 @@
-const IP_ADDRESS = '10.4.61.86'
+const IP_ADDRESS = 'localhost'
 function showRegistrationForm() {
   document.getElementById("registration-form").style.display = "block";
   document.getElementById("cars-list").style.display = "none";

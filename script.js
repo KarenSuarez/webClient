@@ -1,10 +1,5 @@
-
-const express = require('express');
-const app = express();
-
-require('dotenv').config({path: './.env'});
-const PORT = process.env.PORT; 
-const IP_ADDRESS = process.env.IP_ADDRESS;
+const PORT = 12555; 
+const IP_ADDRESS = '192.168.0.105';
 
 
 function showRegistrationForm() {
@@ -114,3 +109,4 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
+
